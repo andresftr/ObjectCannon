@@ -1,0 +1,16 @@
+<h1>Games from index</h1>
+
+<h2>Players</h2>
+
+<% @players.each_with_index do |player, i| %>
+  <p>
+    <strong>Player <%= i+1 %>:</strong>
+    <%= player.name %>
+  </p>
+<% end %>
+
+<%= link_to 'Table', rankings_path %>
+
+<%= link_to 'Exit game', new_player_path,
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %>
