@@ -1,0 +1,21 @@
+<h1>Ranking Games</h1>
+
+<table>
+  <tr>
+    <th>Games one</th>
+    <th>Games one's hit points</th>
+    <th>Games two</th>
+    <th>Games two's hit points</th>
+    <th colspan="1"></th>
+  </tr>
+ 
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.name %></td>
+      <td><%= game.hit_points %></td>
+      <td><%= game.rival %></td>
+      <td><%= game.hit_points_rival %></td>
+      <td><%= link_to 'Show', game_path(game) %></td>
+    </tr>
+  <% end %>
+</table>

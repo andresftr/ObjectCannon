@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
+  get 'games/new'
 
-  resources :players
   resources :games
-  resources :rankings
 
-  root 'welcome#index'
+  root 'games#new'
 end

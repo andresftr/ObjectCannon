@@ -1,0 +1,38 @@
+<h1>Game</h1>
+
+<p>
+  <strong>Player 1:</strong>
+  <%= @game.name %>
+  <% if @game.turn == 1 %>
+    <-
+  <% end %>
+</p>
+
+<p>
+  <strong>Player 1 hit points:</strong>
+  <%= @game.hit_points %>
+</p>
+
+<p>
+  <strong>Player 2:</strong>
+  <%= @game.rival %>
+  <% if @game.turn == 2 %>
+    <-
+  <% end %>
+</p>
+
+<p>
+  <strong>Player 2 hit points:</strong>
+  <%= @game.hit_points_rival %>
+</p>
+
+<div>
+  <h2>Attack Of Player <%= @game.turn %></h2>
+  <%= form_tag do %>
+    <%= label_tag :attributes_of_the_object %>
+    <strong><%= rand(1..5) %></strong>
+    <%= submit_tag 'Attack' %>
+  <% end %>
+</div>
+
+<%= link_to 'Back', games_path %>
