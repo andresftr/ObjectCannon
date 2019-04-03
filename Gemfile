@@ -64,4 +64,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added gems
+gem 'jquery-rails'
+gem 'link_to_add_fields'
 gem 'rubocop', require: false

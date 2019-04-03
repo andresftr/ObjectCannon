@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_192057) do
+ActiveRecord::Schema.define(version: 2019_04_03_164525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2019_04_01_192057) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hit_points", default: 100
+    t.string "rival"
+    t.integer "hit_points_rival", default: 100
   end
 
 end

@@ -1,20 +1,33 @@
 class PlayersController < ApplicationController
+  def index
+    @players = Player.all
+  end
+
+  def show
+    @player = Player.find(params[:id])
+  end
+
   def new
     @player = Player.new
   end
 
   def create
     @player = Player.new(player_params)
-    @players = Player.all
 
     if @player.save
-      if @players.count < 2
-        render 'new'
-      else 
-        redirect_to games_path
-      end
+      redirect_to players_path
     else
       render 'new'
+    end
+  end
+
+  def update
+    @player = Player.find(params[:id])
+
+    if @player.update(article_params)
+      redirect_to @article
+    else
+      render 'show'
     end
   end
 
@@ -28,6 +41,6 @@ class PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:name)
+    params.require(:player).permit(:name, :rival)
   end
 end

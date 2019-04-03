@@ -1,0 +1,23 @@
+<h1>Game</h1>
+
+<p>
+  <strong>Player 1:</strong>
+  <%= @player.name %>
+</p>
+
+<p>
+  <strong>Player 1 hit points:</strong>
+  <%= @player.hit_points %>
+</p>
+
+<p>
+  <strong>Player 2:</strong>
+  <%= @player.rival %>
+</p>
+
+<p>
+  <strong>Player 2 hit points:</strong>
+  <%= @player.hit_points_rival %>
+</p>
+
+<%= link_to 'Back', players_path %>
