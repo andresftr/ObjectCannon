@@ -27,11 +27,37 @@
 </p>
 
 <div>
-  <h2>Attack Of Player <%= @game.turn %></h2>
-  <%= form_tag do %>
-    <%= label_tag :attributes_of_the_object %>
-    <strong><%= rand(1..5) %></strong>
-    <%= submit_tag 'Attack' %>
+  <% if @game.ruby_objects.any? %>
+    <% @game.ruby_objects.each do |r_o| %>
+      <% if r_o.attacker == 1 %>
+        <p>
+          <strong>Attribute numbers of the object of the player one</strong>
+          <%= r_o.number_attributes %>
+        </p>
+      <% else %>
+        <p>
+          <strong>Attribute numbers of the object of the player two</strong>
+          <%= r_o.number_attributes %>
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <h2>Player <%= @game.turn %> is going to attack</h2>
+  <%= form_with(model: [ @game, @game.ruby_objects.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :attacker %><br>
+      <%= form.text_field :attacker, value: @game.turn, readonly: true %>
+    </p>
+    <p>
+      <%= form.label :number_attributes %><br>
+      <%= form.text_field :number_attributes, value: number_attributes, readonly: true %>
+    </p>
+    <p>
+      <%= form.submit 'Launch Object' %>
+    </p>
   <% end %>
 </div>
 

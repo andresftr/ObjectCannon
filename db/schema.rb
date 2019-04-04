@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_222516) do
+ActiveRecord::Schema.define(version: 2019_04_04_160814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,4 +25,15 @@ ActiveRecord::Schema.define(version: 2019_04_03_222516) do
     t.integer "turn", default: 1
   end
 
+  create_table "ruby_objects", force: :cascade do |t|
+    t.integer "attacker", default: 1
+    t.integer "number_attributes"
+    t.integer "attacked"
+    t.bigint "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_ruby_objects_on_game_id"
+  end
+
+  add_foreign_key "ruby_objects", "games"
 end
