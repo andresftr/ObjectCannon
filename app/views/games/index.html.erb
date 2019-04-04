@@ -2,20 +2,22 @@
 
 <table>
   <tr>
-    <th>Games one</th>
-    <th>Games one's hit points</th>
-    <th>Games two</th>
-    <th>Games two's hit points</th>
+    <th>Player 1 Name</th>
+    <th>| Player 2 Name</th>
+    <th>| Winner Wall Health Remaining</th>
+    <th>| Winner</th>
     <th colspan="1"></th>
   </tr>
  
   <% @games.each do |game| %>
     <tr>
       <td><%= game.name %></td>
-      <td><%= game.hit_points %></td>
-      <td><%= game.rival %></td>
-      <td><%= game.hit_points_rival %></td>
-      <td><%= link_to 'Show', game_path(game) %></td>
+      <td>| <%= game.rival %></td>
+      <td>| <%= winner_health(game) %></td>
+      <td>| <%= winner(game) %></td>
+      <td><%= link_to 'Go to game', game_path(game) %></td>
     </tr>
   <% end %>
 </table>
+
+<%= link_to 'New Game', new_game_path %>

@@ -13,4 +13,24 @@ module GamesHelper
     when 37..100 then 0
     end
   end
+
+  def winner_health(game)
+    if game.hit_points > game.hit_points_rival
+      return game.hit_points
+    else
+      return game.hit_points_rival
+    end
+  end
+
+  def winner(game)
+    if game.hit_points > game.hit_points_rival
+      return game.name
+    else
+      return game.rival
+    end
+  end
+
+  def show_object_generator
+    
+  end
 end

@@ -1,51 +1,57 @@
 <h1>Game</h1>
 
-<p>
-  <strong>Player 1:</strong>
-  <%= @game.name %>
-  <% if @game.turn == 1 %>
-    <-
-  <% end %>
-</p>
+<table>
+  <tr>
+    <th>Scores</th>
+    <th>Attribute numbers of the five last objects history</th>
+  </tr>
+  <tr>
+    <td>
+      <p>
+        <strong>Player 1:</strong>
+        <%= @game.name %>
+        <% if @game.turn == 1 %>
+          <-
+        <% end %>
+      </p>
 
-<p>
-  <strong>Player 1 hit points:</strong>
-  <%= @game.hit_points %>
-</p>
+      <p>
+        <strong>Player 1 hit points:</strong>
+        <%= @game.hit_points %>
+      </p>
 
-<p>
-  <strong>Player 2:</strong>
-  <%= @game.rival %>
-  <% if @game.turn == 2 %>
-    <-
-  <% end %>
-</p>
+      <p>
+        <strong>Player 2:</strong>
+        <%= @game.rival %>
+        <% if @game.turn == 2 %>
+          <-
+        <% end %>
+      </p>
 
-<p>
-  <strong>Player 2 hit points:</strong>
-  <%= @game.hit_points_rival %>
-</p>
+      <p>
+        <strong>Player 2 hit points:</strong>
+        <%= @game.hit_points_rival %>
+      </p>
+    </td>
+    <td>
+      <table>
+        <tr>
+          <th>Player one</th>
+          <th>Player two</th>
+        </tr>
+        <% @game.ruby_objects.last(10).reverse_each do |r_o| %>
+          <tr>
+            <td><%= r_o.number_attributes if r_o.attacker == 1 %></td>
+            <td><%= r_o.number_attributes if r_o.attacker == 2 %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+</table>
 
 <div>
-  <% if @game.ruby_objects.any? %>
-    <% @game.ruby_objects.each do |r_o| %>
-      <% if r_o.attacker == 1 %>
-        <p>
-          <strong>Attribute numbers of the object of the player one</strong>
-          <%= r_o.number_attributes %>
-        </p>
-      <% else %>
-        <p>
-          <strong>Attribute numbers of the object of the player two</strong>
-          <%= r_o.number_attributes %>
-        </p>
-      <% end %>
-    <% end %>
-  <% end %>
-</div>
-
-<div>
-  <h2>Player <%= @game.turn %> is going to attack</h2>
+  <h2>Generated object</h2>
   <%= form_with(model: [ @game, @game.ruby_objects.build ], local: true) do |form| %>
     <p>
       <%= form.label :attacker %><br>
