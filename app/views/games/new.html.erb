@@ -1,33 +1,5 @@
-<h1>New Player for Game </h1>
+<h1>Names of players to start playing</h1>
 
-<%= form_with model: @game, local: true do |form| %>
-
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@game.errors.count, "error") %> prohibited
-        this game from being saved:
-      </h2>
-      <ul>
-        <% @game.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <p>
-    <%= form.label :player_one %>
-    <%= form.text_field :name, required: true %>
-  </p>
-
-  <p>
-    <%= form.label :player_two %>
-    <%= form.text_field :rival, required: true %>
-  </p>
-  
-  <%= form.submit 'Go to play' %>
-
-<% end %>
+<%= render 'new' %>
 
 <%= link_to 'Go to games', games_path %>
