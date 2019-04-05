@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Here are the CRUD methods to the Games
 class GamesController < ApplicationController
   def index
     @games = Game.all
@@ -42,17 +45,5 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:name, :rival)
-  end
-
-  def register_attack(attack)
-    @game = Game.find(params[:id])
-
-    if @game.turn == 1
-      @game.hit_points_rival -= attack
-      @game.turn = 2
-    else
-      @game.hit_points -= attack
-      @game.turn = 1
-    end
   end
 end

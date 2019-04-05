@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Here are the Games Helper
 module GamesHelper
   def number_attributes
-    rand(1..5)+value_to_sum
+    rand(1..5) + value_to_sum
   end
 
   def value_to_sum
@@ -16,21 +19,27 @@ module GamesHelper
 
   def winner_health(game)
     if game.hit_points > game.hit_points_rival
-      return game.hit_points
+      game.hit_points
     else
-      return game.hit_points_rival
+      game.hit_points_rival
     end
   end
 
   def winner(game)
     if game.hit_points > game.hit_points_rival
-      return game.name
+      game.name
     else
-      return game.rival
+      game.rival
     end
   end
 
-  def show_object_generator
-    
+  def show_object_generator(game)
+    if game.hit_points <= 0
+      "#{game.rival} is the winner."
+    elsif game.hit_points_rival <= 0
+      "#{game.name} is the winner."
+    else
+      render 'ruby_objects/generator'
+    end
   end
 end

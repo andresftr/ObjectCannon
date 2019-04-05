@@ -1,0 +1,15 @@
+<h2>Generated object</h2>
+
+<%= form_with(model: [ @game, @game.ruby_objects.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :attacker %><br>
+    <%= form.text_field :attacker, value: @game.turn, readonly: true %>
+  </p>
+  <p>
+    <%= form.label :number_attributes %><br>
+    <%= form.text_field :number_attributes, value: number_attributes, readonly: true %>
+  </p>
+  <p>
+    <%= form.submit 'Launch Object' %>
+  </p>
+<% end %>
