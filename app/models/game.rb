@@ -7,9 +7,7 @@ class Game < ApplicationRecord
   validate :different_names
 
   def different_names
-    if name == rival
-      errors.add(:rival, "can't have the same name as player one")
-      throw(:abort)
-    end
+    errors.add(:rival, "can't have the same name as player one") if name == rival
+    throw(:abort)
   end
 end
