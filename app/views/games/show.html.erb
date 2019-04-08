@@ -1,53 +1,61 @@
 <h1>Game</h1>
 
-<table>
-  <tr>
-    <th>Scores</th>
-    <th>Attribute numbers of the five last objects history</th>
-  </tr>
-  <tr>
-    <td>
-      <p>
-        <strong>Player 1:</strong>
-        <%= @game.name %>
-        <% if @game.turn == 1 %>
-          <-
-        <% end %>
-      </p>
+<table class='table w-75'>
+  <thead>
+    <tr>
+      <th>Scores</th>
+      <th>Attribute numbers of the five last objects history</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p>
+          <strong>Player 1:</strong>
+          <%= @game.name %>
+          <% if @game.turn == 1 %>
+            <-
+          <% end %>
+        </p>
 
-      <p>
-        <strong>Player 1 hit points:</strong>
-        <%= @game.hit_points %>
-      </p>
+        <p>
+          <strong>Player 1 hit points:</strong>
+          <%= @game.hit_points %>
+        </p>
 
-      <p>
-        <strong>Player 2:</strong>
-        <%= @game.rival %>
-        <% if @game.turn == 2 %>
-          <-
-        <% end %>
-      </p>
+        <p>
+          <strong>Player 2:</strong>
+          <%= @game.rival %>
+          <% if @game.turn == 2 %>
+            <-
+          <% end %>
+        </p>
 
-      <p>
-        <strong>Player 2 hit points:</strong>
-        <%= @game.hit_points_rival %>
-      </p>
-    </td>
-    <td>
-      <table>
-        <tr>
-          <th>Player one</th>
-          <th>Player two</th>
-        </tr>
-        <% @game.ruby_objects.last(10).reverse_each do |r_o| %>
-          <tr>
-            <td><%= r_o.number_attributes if r_o.attacker == 1 %></td>
-            <td><%= r_o.number_attributes if r_o.attacker == 2 %></td>
-          </tr>
-        <% end %>
-      </table>
-    </td>
-  </tr>
+        <p>
+          <strong>Player 2 hit points:</strong>
+          <%= @game.hit_points_rival %>
+        </p>
+      </td>
+      <td>
+        <table class='table table-striped table-sm'>
+          <thead>
+            <tr>
+              <th>Player one</th>
+              <th>Player two</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @game.ruby_objects.last(10).reverse_each do |r_o| %>
+              <tr>
+                <td><%= r_o.number_attributes if r_o.attacker == 1 %></td>
+                <td><%= r_o.number_attributes if r_o.attacker == 2 %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <div>
@@ -57,5 +65,5 @@
     <%= show_object_generator(@game) %>
   <% end %>
 </div>
-
-<%= link_to 'Back', games_path %>
+<br>
+<%= link_to 'Back', games_path, class: 'btn btn-secondary btn-sm' %>

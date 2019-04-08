@@ -1,26 +1,30 @@
 <h1>Ranking Games</h1>
 
-<table>
-  <tr>
-    <th>Player 1 Name</th>
-    <th>| Player 2 Name</th>
-    <th>| Winner Wall Health Remaining</th>
-    <th>| Winner</th>
-    <th colspan="2"></th>
-  </tr>
- 
-  <% @games.each do |game| %>
+<table class='table table-striped table-sm w-75'>
+  <thead>
     <tr>
-      <td><%= game.name %></td>
-      <td>| <%= game.rival %></td>
-      <td>| <%= winner_health(game) %></td>
-      <td>| <%= winner(game) %></td>
-      <td><%= link_to 'Go to the game', game_path(game) %></td>
-      <td><%= link_to 'Delete the game', game_path(game),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <th>Player 1 Name</th>
+      <th>Player 2 Name</th>
+      <th>Winner Wall Health Remaining</th>
+      <th>Winner</th>
+      <th colspan="2"></th>
     </tr>
-  <% end %>
+  </thead>
+  
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= game.rival %></td>
+        <td><%= winner_health(game) %></td>
+        <td><%= winner(game) %></td>
+        <td><%= link_to 'Go', game_path(game), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to 'Delete', game_path(game), class: 'btn btn-danger btn-sm',
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<%= link_to 'New Game', welcome_index_path %>
+<%= link_to 'New Game', welcome_index_path, class: 'btn btn-primary' %>

@@ -1,29 +1,33 @@
-<%= form_with model: @game, local: true do |form| %>
+<div class="container w-50">
+  <%= form_with model: @game, local: true do |form| %>
 
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@game.errors.count, "error") %> prohibited
-        this game from being saved:
-      </h2>
-      <ul>
-        <% @game.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+    <% if @game.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@game.errors.count, "error") %> prohibited
+          this game from being saved:
+        </h2>
+        <ul>
+          <% @game.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class='form-group'>
+      <%= form.label :player_one %>
+      <%= form.text_field :name, required: true, class: 'form-control' %>
     </div>
+
+    <div class='form-group'>
+      <%= form.label :player_two %>
+      <%= form.text_field :rival, required: true, class: 'form-control' %>
+    </div>
+    
+    <%= form.submit 'Go to play', class: 'btn btn-primary' %>
+
   <% end %>
-
-  <p>
-    <%= form.label :player_one %>
-    <%= form.text_field :name, required: true %>
-  </p>
-
-  <p>
-    <%= form.label :player_two %>
-    <%= form.text_field :rival, required: true %>
-  </p>
-  
-  <%= form.submit 'Go to play' %>
-
-<% end %>
+  <br>
+  <%= link_to 'Go to games', games_path, class: 'btn btn-secondary btn-sm' %>
+</div>
