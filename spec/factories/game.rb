@@ -5,7 +5,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     rival { Faker::Name.name }
 
-    trait :without_name do
+    trait :invalid do
       name { nil }
     end
 

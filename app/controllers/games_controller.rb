@@ -24,16 +24,6 @@ class GamesController < ApplicationController
     end
   end
 
-  def update
-    @game = Game.find(params[:id])
-
-    if @game.update(game_params)
-      redirect_to @game
-    else
-      render 'show'
-    end
-  end
-
   def destroy
     @games = Game.find(params[:id])
     @games.destroy

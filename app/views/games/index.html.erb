@@ -6,7 +6,7 @@
     <th>| Player 2 Name</th>
     <th>| Winner Wall Health Remaining</th>
     <th>| Winner</th>
-    <th colspan="1"></th>
+    <th colspan="2"></th>
   </tr>
  
   <% @games.each do |game| %>
@@ -15,7 +15,10 @@
       <td>| <%= game.rival %></td>
       <td>| <%= winner_health(game) %></td>
       <td>| <%= winner(game) %></td>
-      <td><%= link_to 'Go to game', game_path(game) %></td>
+      <td><%= link_to 'Go to the game', game_path(game) %></td>
+      <td><%= link_to 'Delete the game', game_path(game),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>

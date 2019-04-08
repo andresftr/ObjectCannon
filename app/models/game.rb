@@ -2,8 +2,8 @@
 
 # Here are the validations and other things related with the Game model
 class Game < ApplicationRecord
-  has_many :ruby_objects
-  validates :name, :rival, presence: true, length: { in: 3..20 }
+  has_many :ruby_objects, dependent: :destroy
+  validates :name, :rival, presence: true, length: { in: 3..25 }
   validate :different_names
 
   def different_names

@@ -7,7 +7,7 @@ RSpec.describe Game, type: :model do
   end
 
   it 'is invalid without a name' do
-    client = build(:game, :without_name)
+    client = build(:game, :invalid)
     client.valid?
     expect(client.errors[:name]).to include("can't be blank")
   end
@@ -30,16 +30,16 @@ RSpec.describe Game, type: :model do
     expect(client.errors[:rival]).to include('is too short (minimum is 3 characters)')
   end
 
-  it 'is invalid a name with a length more than 20' do
-    client = build(:game, name: 'pedro luis miguel de los santos')
+  it 'is invalid a name with a length more than 25' do
+    client = build(:game, name: 'pedro luis miguel de los santoszzzzzzzz')
     client.valid?
-    expect(client.errors[:name]).to include('is too long (maximum is 20 characters)')
+    expect(client.errors[:name]).to include('is too long (maximum is 25 characters)')
   end
 
-  it 'is invalid a rival with a length more than 20' do
-    client = build(:game, rival: 'pedro luis miguel de los santos')
+  it 'is invalid a rival with a length more than 25' do
+    client = build(:game, rival: 'pedro luis miguel de los santoszzzzzzzzzz')
     client.valid?
-    expect(client.errors[:rival]).to include('is too long (maximum is 20 characters)')
+    expect(client.errors[:rival]).to include('is too long (maximum is 25 characters)')
   end
 
   it 'is invalid with a name and a rival with the same name' do
