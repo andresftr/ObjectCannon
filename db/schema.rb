@@ -19,18 +19,18 @@ ActiveRecord::Schema.define(version: 2019_04_04_204309) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "hit_points", default: 100
     t.string "rival"
+    t.integer "hit_points", default: 100
     t.integer "hit_points_rival", default: 100
     t.integer "turn", default: 1
   end
 
   create_table "ruby_objects", force: :cascade do |t|
+    t.integer "attacker", default: 1
     t.integer "number_attributes"
     t.bigint "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "attacker"
     t.index ["game_id"], name: "index_ruby_objects_on_game_id"
   end
 
