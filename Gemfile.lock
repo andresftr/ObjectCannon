@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: a75dfa79dac413e2dbcbcbfaf2c930e81256cdf0
+  revision: 59a92644d5583828add1c68351074f6e52c6deb6
   branch: master
   specs:
     faker (1.9.3)
@@ -61,10 +61,10 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.5.0)
+    autoprefixer-rails (9.5.1)
       execjs
-    bindex (0.6.0)
-    bootsnap (1.4.2)
+    bindex (0.7.0)
+    bootsnap (1.4.3)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
