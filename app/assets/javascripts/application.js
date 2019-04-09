@@ -13,7 +13,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require link_to_add_fields
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

@@ -71,7 +71,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Added gems
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
-gem 'link_to_add_fields'
 gem 'rails-controller-testing'
 gem 'rubocop', require: false
 gem 'rubocop-performance'
